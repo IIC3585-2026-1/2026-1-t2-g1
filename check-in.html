@@ -11,13 +11,15 @@
 
     <nav class="navbar">
         <div class="logo-container">
-            <img src="styles/img/plane.png" alt="AsyncAir Logo" class="logo" >
+            <img src="styles/img/plane.png" alt="AsyncAir Logo" class="logo">
             <span class="brand-name">AsyncAir</span>
         </div>
     </nav>
 
     <main class="main-content">
-        <section class="checkin-container">
+
+        <!-- VISTA CHECK-IN -->
+        <section id="checkin-view" class="checkin-container">
             <h1>Check-in</h1>
             
             <form class="input-group">
@@ -27,6 +29,35 @@
 
             <div id="logs-box" class="status-box"></div>
         </section>
+
+        <!-- VISTA BOARDING PASS -->
+        <section id="boarding-view" style="display: none;">
+            
+            <template id="boarding-template">
+                <section class="boarding-card-frame">
+                    <div class="boarding-pass-white">
+                        <div class="pass-info">
+                            <h2>Boarding pass</h2>
+                            <div class="details">
+                                <p>Pasajero: #<span class="pasajero"></span></p>
+                                <p>Asiento: <span class="asiento"></span></p>
+                                <p>Estado: LISTO PARA EMBARQUE</p>
+                            </div>
+                        </div>
+                        
+                        <div class="qr-code">
+                            <img src="styles/img/QR.png" alt="Código QR" class="qr-image">
+                        </div>
+                    </div>
+                </section>
+            </template>
+
+            <button onclick="volverAlCheckIn()" class="submit-btn">
+                Volver
+            </button>
+
+        </section>
+
     </main>
 
 </body>

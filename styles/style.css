@@ -144,6 +144,22 @@ h1 {
     margin-bottom: 5px;
 }
 
+#boarding-view {
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 0 auto; 
+}
+
+#boarding-view .submit-btn {
+    margin-top: 10px;
+}
+
+
 /* QR */
 .qr-image {
     width: 140px;

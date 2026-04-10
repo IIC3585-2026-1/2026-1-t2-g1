@@ -1,6 +1,7 @@
 const iniciarCheckIn = () => {
     const pasajeroId = document.getElementById("input-id").value.trim();
-    const logsBox = document.getElementById("logs-box")
+    const logsBox = document.getElementById("logs-box");
+
     if (pasajeroId === null || pasajeroId === undefined || pasajeroId === "") return;
 
     logsBox.style.visibility = "visible";
@@ -17,20 +18,29 @@ const iniciarCheckIn = () => {
             logsBox.innerHTML += `<p>Asignando asiento...</p>`;
             return asignarAsiento();
         })
+
         .then((asiento) => {
             console.log(asiento);
-            logsBox.innerHTML += `<p>Asiento asignado: ${asiento}</p>`;
+            // logsBox.innerHTML += `<p>Asiento asignado: ${asiento}</p>`;
+
+            return generarPaseAbordar({
+                pasajeroId,
+                asiento
+            });
         })
+
+        .then((pase) => {
+            mostrarBoardingPass(pase);
+        })
+
         .catch((error) => {
             console.log(error);
-            logsBox.innerHTML = `<p>${error}</p>`;
+            logsBox.innerHTML = `<p>Error: ${error.message}</p>`;
         });
 };
 
 const validarPasaporte = (id) => {
     return new Promise((resolve, reject) => {
-        console.log("Validando id del pasaporte");
-
         setTimeout(() => {
             if (id % 2 == 0) {
                 reject(new Error("Id invalido"));
@@ -42,8 +52,6 @@ const validarPasaporte = (id) => {
 
 const verificarRestriccionesVisa = (id) => {
     return new Promise((resolve, reject) => {
-        console.log(`Verificando restricciones de visa para el pasajero ${id}`);
-
         setTimeout(() => {
             return Math.random() < 0.3
                 ? reject(new Error("Visa no valida para el destino"))
@@ -57,8 +65,6 @@ const asignarAsiento = () => {
     const seats = ["A", "B", "C", "D", "E", "F"];
 
     return new Promise((resolve) => {
-        console.log("Asignando asiento");
-
         setTimeout(() => {
             const row = rows[Math.floor(Math.random() * rows.length)];
             const seat = seats[Math.floor(Math.random() * seats.length)];
@@ -68,4 +74,41 @@ const asignarAsiento = () => {
 };
 
 const generarPaseAbordar = (datos) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(datos);
+        }, 500);
+    });
+};
+
+const mostrarBoardingPass = (pase) => {
+    document.getElementById("checkin-view").style.display = "none";
+
+    const boardingView = document.getElementById("boarding-view");
+    boardingView.style.display = "block";
+
+    const template = document.getElementById("boarding-template");
+    const clone = template.content.cloneNode(true);
+
+    clone.querySelector(".pasajero").textContent = pase.pasajeroId;
+    clone.querySelector(".asiento").textContent = pase.asiento;
+
+    boardingView.querySelectorAll(".boarding-card-frame").forEach(el => el.remove());
+
+    boardingView.prepend(clone);
+};
+
+const volverAlCheckIn = () => {
+    document.getElementById("checkin-view").style.display = "block";
+
+    const boardingView = document.getElementById("boarding-view");
+    boardingView.style.display = "none";
+
+    boardingView.querySelectorAll(".boarding-card-frame").forEach(el => el.remove());
+
+    document.getElementById("input-id").value = "";
+
+    const logsBox = document.getElementById("logs-box");
+    logsBox.innerHTML = "";
+    logsBox.style.visibility = "visible";
 };
