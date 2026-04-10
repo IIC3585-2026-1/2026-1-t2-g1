@@ -98,6 +98,11 @@ h1 {
     filter: brightness(1.1);
 }
 
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 /* Cuadro de Status */
 .status-box {
     border: 2px dashed #10004F;

@@ -1,10 +1,11 @@
 const iniciarCheckIn = () => {
     const pasajeroId = document.getElementById("input-id").value.trim();
     const logsBox = document.getElementById("logs-box");
+    const inputButton = document.getElementById("input-btn");
+    inputButton.disabled = true;
 
     if (pasajeroId === null || pasajeroId === undefined || pasajeroId === "") return;
 
-    logsBox.style.visibility = "visible";
     logsBox.innerHTML = `<p>ID ingresado: ${pasajeroId}</p><p>Iniciando Validaciones...</p>`;
 
     Promise.all([validarPasaporte(pasajeroId), verificarRestriccionesVisa(pasajeroId)])
@@ -30,12 +31,14 @@ const iniciarCheckIn = () => {
         })
 
         .then((pase) => {
+            inputButton.disabled = false;
             mostrarBoardingPass(pase);
         })
 
         .catch((error) => {
             console.log(error);
             logsBox.innerHTML = `<p>Error: ${error.message}</p>`;
+            inputButton.disabled = false;
         });
 };
 
