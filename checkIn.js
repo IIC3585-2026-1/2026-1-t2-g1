@@ -46,7 +46,7 @@ const validarPasaporte = (id) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (id % 2 == 0) {
-                reject(new Error("Id invalido"));
+                reject(new Error("Id inválido."));
             }
             resolve("Id valido");
         }, 1500);
@@ -57,7 +57,7 @@ const verificarRestriccionesVisa = (id) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             return Math.random() < 0.3
-                ? reject(new Error("Visa no valida para el destino"))
+                ? reject(new Error("Visa no válida para el destino."))
                 : resolve("Visa verificada");
         }, 2000);
     });
