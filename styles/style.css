@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Evita scroll innecesario si no hay mucho contenido */
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Apila navbar arriba y contenido abajo */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #10004F;
+    padding: 15px 50px;
+    width: 100%;
+    flex-shrink: 0; /* Evita que el navbar se encoja */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.brand-name {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Contenedor Gris*/
+.main-content {
+    background-color: #F2F2F2;
+    flex-grow: 1; /* Esto hace que tome todo el espacio disponible hacia abajo */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra el formulario verticalmente */
+    padding: 20px;
+}
+
+.checkin-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #10004F;
+    margin-bottom: 40px;
+    font-size: 32px;
+}
+
+/* Formulario */
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.user-input {
+    border: 2px solid #10004F;
+    padding: 12px 20px;
+    width: 300px;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+    color: #10004F;
+}
+
+.submit-btn {
+    background-color: #E63C5A;
+    color: white;
+    border: none;
+    padding: 12px 45px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Cuadro de Status */
+.status-box {
+    border: 2px dashed #10004F;
+    padding: 30px;
+    background-color: rgba(16, 0, 79, 0.02); /* Un toque sutil de color */
+}
+
+.status-box p {
+    font-style: italic;
+    color: #10004F;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.status-box p.error {
+    font-weight: bold;
+}
+
+/* Boarding Pass Styles */
+.boarding-card-frame {
+    border: 2px dashed #10004F;
+    width: 100%;
+    max-width: 750px;
+}
+
+.boarding-pass-white {
+    background-color: white;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.pass-info h2 {
+    color: #10004F;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.details p {
+    color: #10004F;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* QR */
+.qr-image {
+    width: 140px;
+    height: 140px;
+}
