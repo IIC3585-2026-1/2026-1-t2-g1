@@ -7,7 +7,14 @@ const checkInTimeout = () => {
 };
 
 const iniciarCheckIn = () => {
-    const pasajeroId = document.getElementById("input-id").value.trim();
+    const pasajeroId = parseInt(document.getElementById("input-id").value.trim());
+    if (
+        pasajeroId === null || 
+        pasajeroId === undefined || 
+        pasajeroId === "" || 
+        isNaN(pasajeroId)
+    ) return;
+    
     const logsBox = document.getElementById("logs-box");
     const inputButton = document.getElementById("input-btn");
     inputButton.disabled = true;
@@ -17,7 +24,6 @@ const iniciarCheckIn = () => {
         logsBox.innerHTML += `<p>${message}</p>`;
     }
 
-    if (pasajeroId === null || pasajeroId === undefined || pasajeroId === "") return;
 
     log(`ID ingresado: ${pasajeroId}`);
     log(`Iniciando Validaciones...`);
